@@ -1,0 +1,1 @@
+CREATE DATABASE rails_coe_test;

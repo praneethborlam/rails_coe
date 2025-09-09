@@ -1,0 +1,16 @@
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.env*
+tmp/
+log/
+.byebug_history
+node_modules/
+.bundle/
+vendor/bundle/
+*.log
+coverage/
+.rspec
