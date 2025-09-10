@@ -1,31 +1,28 @@
-# frozen_string_literal: true
-
 module Types
   class QueryType < Types::BaseObject
-    field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
-      argument :id, ID, required: true, description: "ID of the object."
+    include GraphQL::Types::Relay::HasNodeField
+    include GraphQL::Types::Relay::HasNodesField
+
+    # Get all users
+    field :users, [Types::UserType], null: false, description: "Get all users"
+    def users
+      User.all
     end
 
-    def node(id:)
-      context.schema.object_from_id(id, context)
+    # Get a specific user by ID
+    field :user, Types::UserType, null: true, description: "Get a user by ID" do
+      argument :id, ID, required: true, description: "ID of the user to fetch"
+    end
+    def user(id:)
+      User.find_by(id: id)
     end
 
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
+    # Search users by name
+    field :users_by_name, [Types::UserType], null: false, description: "Search users by name" do
+      argument :name, String, required: true, description: "Name to search for"
     end
-
-    def nodes(ids:)
-      ids.map { |id| context.schema.object_from_id(id, context) }
-    end
-
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def users_by_name(name:)
+      User.where("name ILIKE ?", "%#{name}%")
     end
   end
 end
