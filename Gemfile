@@ -12,6 +12,9 @@ gem "rack-cors"
 # GraphQL
 gem "graphql", "~> 2.0"
 
+# HTTP client for API calls
+gem "httparty"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0"
@@ -28,4 +31,6 @@ end
 group :test do
   gem "shoulda-matchers", "~> 5.0"
   gem "database_cleaner-active_record"
+  gem "vcr"
+  gem "webmock"
 end
