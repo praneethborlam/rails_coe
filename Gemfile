@@ -15,6 +15,8 @@ gem "graphql", "~> 2.0"
 # HTTP client for API calls
 gem "httparty"
 
+gem "strong_migrations"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0"

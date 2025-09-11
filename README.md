@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Strong Migrations: Safe Practices
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Column Operations
+ Add columns without defaults first
+ Backfill data in separate migration
+ Add constraints after backfill
+ Use 3-step process for column removal/rename
+Index Operations
+ Always use algorithm: :concurrently
+ Disable DDL transactions for concurrent indexes
+ Monitor index creation on large tables
+Foreign Key Operations
+ Add with validate: false
+ Validate in separate migration
+ Consider impact on related tables

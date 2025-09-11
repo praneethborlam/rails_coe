@@ -277,6 +277,8 @@ GEM
       activesupport (>= 5.2.0)
     spring (4.4.0)
     stringio (3.1.7)
+    strong_migrations (2.3.0)
+      activerecord (>= 7)
     thor (1.4.0)
     timeout (0.4.3)
     tzinfo (2.0.6)
@@ -321,6 +323,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0)
   shoulda-matchers (~> 5.0)
   spring
+  strong_migrations
   vcr
   webmock
 
